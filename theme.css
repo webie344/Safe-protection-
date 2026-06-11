@@ -1,0 +1,126 @@
+/* ============================================================
+   SafeSignal — Theme & Design Tokens
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Colors */
+  --bg:           #050B15;
+  --bg2:          #0D1526;
+  --bg3:          #111E35;
+  --surface:      rgba(255,255,255,0.04);
+  --surface-h:    rgba(255,255,255,0.07);
+  --border:       rgba(255,255,255,0.08);
+  --border-h:     rgba(0,212,255,0.3);
+
+  --cyan:         #00D4FF;
+  --cyan-dim:     rgba(0,212,255,0.15);
+  --cyan-glow:    0 0 20px rgba(0,212,255,0.4);
+  --purple:       #7C3AED;
+  --purple-dim:   rgba(124,58,237,0.15);
+
+  --safe:         #10B981;
+  --safe-dim:     rgba(16,185,129,0.15);
+  --safe-glow:    0 0 20px rgba(16,185,129,0.4);
+
+  --warn:         #F59E0B;
+  --warn-dim:     rgba(245,158,11,0.15);
+  --warn-glow:    0 0 20px rgba(245,158,11,0.4);
+
+  --danger:       #EF4444;
+  --danger-dim:   rgba(239,68,68,0.15);
+  --danger-glow:  0 0 20px rgba(239,68,68,0.4);
+
+  --text:         #F9FAFB;
+  --text2:        #9CA3AF;
+  --text3:        #4B5563;
+
+  /* Typography */
+  --font:         'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+
+  /* Spacing */
+  --r:   16px;
+  --r-sm: 10px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4,0,0.2,1);
+  --fast: 150ms;
+  --med:  300ms;
+  --slow: 500ms;
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 100%; font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-h); }
+
+/* Selection */
+::selection { background: var(--cyan-dim); color: var(--cyan); }
+
+/* Focus */
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes fadeIn    { from { opacity:0 } to { opacity:1 } }
+@keyframes fadeUp    { from { opacity:0; transform:translateY(24px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeDown  { from { opacity:0; transform:translateY(-16px) } to { opacity:1; transform:translateY(0) } }
+@keyframes scaleIn   { from { opacity:0; transform:scale(0.92) } to { opacity:1; transform:scale(1) } }
+@keyframes slideLeft { from { opacity:0; transform:translateX(40px) } to { opacity:1; transform:translateX(0) } }
+@keyframes slideRight{ from { opacity:0; transform:translateX(-40px) } to { opacity:1; transform:translateX(0) } }
+@keyframes pulse     { 0%,100% { opacity:1 } 50% { opacity:.4 } }
+@keyframes spin      { from { transform:rotate(0) } to { transform:rotate(360deg) } }
+@keyframes shimmer   {
+  0%   { background-position: -200% 0 }
+  100% { background-position:  200% 0 }
+}
+@keyframes floatUp   {
+  0%,100% { transform: translateY(0px) }
+  50%     { transform: translateY(-8px) }
+}
+@keyframes glow      {
+  0%,100% { box-shadow: 0 0 20px rgba(0,212,255,0.3) }
+  50%     { box-shadow: 0 0 40px rgba(0,212,255,0.6) }
+}
+@keyframes ripple    {
+  0%   { transform:scale(0); opacity:0.6 }
+  100% { transform:scale(4); opacity:0 }
+}
+@keyframes progressBar {
+  from { width: 0% }
+  to   { width: 100% }
+}
+@keyframes bounceIn  {
+  0%   { transform:scale(0.3); opacity:0 }
+  50%  { transform:scale(1.05); opacity:0.8 }
+  70%  { transform:scale(0.9) }
+  100% { transform:scale(1); opacity:1 }
+}
+
+.anim-fade-in    { animation: fadeIn    var(--med) var(--ease) both }
+.anim-fade-up    { animation: fadeUp    var(--med) var(--ease) both }
+.anim-scale-in   { animation: scaleIn   var(--med) var(--ease) both }
+.anim-slide-left { animation: slideLeft var(--med) var(--ease) both }
+.anim-float      { animation: floatUp   3s ease-in-out infinite }
